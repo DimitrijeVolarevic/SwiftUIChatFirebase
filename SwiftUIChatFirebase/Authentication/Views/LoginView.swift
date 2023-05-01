@@ -12,6 +12,7 @@ struct LoginView: View {
     @State var isLoginMode: Bool = false
     @State var email = ""
     @State var password = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationView {
@@ -33,7 +34,7 @@ struct LoginView: View {
                                 .font(.system(size: 64))
                                 .padding()
                                 .foregroundColor(.black)
-                        }
+                            }
                     }
                     
                     
@@ -53,7 +54,7 @@ struct LoginView: View {
                     
                     
                     Button {
-                        
+                        handleAction()
                     } label: {
                         HStack {
                             Spacer()
@@ -69,7 +70,9 @@ struct LoginView: View {
                     .cornerRadius(10)
                     .padding(.vertical,6)
                     
-                    
+                    // correct later
+                    Text(self.viewModel.loginStatusMessage)
+                        .foregroundColor(.red)
                 }
                 .padding()
                 .background(Color(.init(gray: 0, alpha: 0.10)))
@@ -78,9 +81,19 @@ struct LoginView: View {
             .navigationTitle(isLoginMode ? "Log In" : "Create Account")
         }
     }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
+    
+    private func handleAction() {
+        if isLoginMode {
+            viewModel.logIn(withEmail: email, password: password)
+        } else {
+            viewModel.register(withEmail: email, password: password)
+        }
     }
+    
 }
+
+//struct ContentView_Previews1: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
