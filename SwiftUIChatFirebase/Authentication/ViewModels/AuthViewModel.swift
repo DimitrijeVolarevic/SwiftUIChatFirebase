@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import SwiftUI
+import FirebaseStorage
 
 class AuthViewModel: ObservableObject {
     
@@ -37,7 +38,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func register(withEmail email: String, password: String) {
+    func register(withEmail email: String, password: String, image: UIImage) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Failed to register with error: ", error)
@@ -51,6 +52,41 @@ class AuthViewModel: ObservableObject {
             print("Registered user successfully: \(result?.user.uid ?? "")")
             
             self.loginStatusMessage = "Registered user successfully: \(result?.user.uid ?? "")"
+            
+            self.persistImageToStorage(image: image)
         }
     }
+    
+    func persistImageToStorage(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            print("Could not convert image to data.")
+            return
+        }
+
+        // Create a unique identifier for the image
+        let imageName = UUID().uuidString
+        let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).jpg")
+
+        storageRef.putData(imageData, metadata: nil) { metadata, error in
+            if let error = error {
+                print("Failed to upload image to Firebase Storage with error: ", error)
+                return
+            }
+
+            storageRef.downloadURL { url, error in
+                if let error = error {
+                    print("Failed to fetch downloadURL: ", error)
+                    return
+                }
+
+                guard let imageUrl = url?.absoluteString else {
+                    print("URL is nil.")
+                    return
+                }
+
+                print("Successfully uploaded image to Firebase Storage.")
+            }
+        }
+    }
+
 }

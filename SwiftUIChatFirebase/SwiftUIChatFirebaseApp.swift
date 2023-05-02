@@ -18,10 +18,9 @@ struct SwiftUIChatFirebaseApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            NavigationView {
                 LoginView()
-            }
-            .environmentObject(viewModel)
+                    .environmentObject(viewModel)
         }
+        
     }
 }

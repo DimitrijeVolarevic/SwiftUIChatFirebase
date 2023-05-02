@@ -17,6 +17,7 @@
 		B7C2DA9B2A002157003B981D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B7C2DA9A2A002157003B981D /* FirebaseStorage */; };
 		B7C2DAA42A003573003B981D /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2DAA32A003573003B981D /* AuthViewModel.swift */; };
 		B7C2DAA62A00381B003B981D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7C2DAA52A00381B003B981D /* GoogleService-Info.plist */; };
+		B7C5220F2A01261C00E52B57 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5220E2A01261C00E52B57 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B76F5B652A0007B200D319E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7C2DAA32A003573003B981D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		B7C2DAA52A00381B003B981D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B7C5220E2A01261C00E52B57 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		B76F5B5D2A0007B100D319E4 /* SwiftUIChatFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				B7C5220D2A01260600E52B57 /* Utilities */,
 				B7C2DA9E2A002530003B981D /* Authentication */,
 				B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */,
 				B7C2DAA52A00381B003B981D /* GoogleService-Info.plist */,
@@ -103,6 +106,14 @@
 				B7C2DAA32A003573003B981D /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B7C5220D2A01260600E52B57 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B7C5220E2A01261C00E52B57 /* ImagePicker.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76F5B612A0007B100D319E4 /* LoginView.swift in Sources */,
+				B7C5220F2A01261C00E52B57 /* ImagePicker.swift in Sources */,
 				B76F5B5F2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift in Sources */,
 				B7C2DAA42A003573003B981D /* AuthViewModel.swift in Sources */,
 			);
