@@ -44,7 +44,7 @@ struct LoginView: View {
                                     Image(systemName: "person.fill")
                                         .font(.system(size: 64))
                                         .padding()
-                                        .foregroundColor(.black)
+                                        .foregroundColor(.primary)
                                 }
                             }
                             
@@ -84,9 +84,8 @@ struct LoginView: View {
                     .cornerRadius(10)
                     .padding(.vertical,6)
                     
-                    // correct later
                     Text(self.viewModel.loginStatusMessage)
-                        .foregroundColor(.red)
+                        .foregroundColor(.black)
                 }
                 .padding()
                 .background(Color(.init(gray: 0, alpha: 0.10)))
@@ -111,9 +110,3 @@ struct LoginView: View {
         }
     }
 }
-
-//struct ContentView_Previews1: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
-//}

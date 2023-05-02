@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var loginStatusMessage = ""
+    var didAuthenticateUser: (() -> Void)?
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -53,11 +54,22 @@ class AuthViewModel: ObservableObject {
             
             self.loginStatusMessage = "Registered user successfully: \(result?.user.uid ?? "")"
             
-            self.persistImageToStorage(image: image)
+            self.persistImageToStorage(image: image) { imageURL in
+                let data = ["email": email,
+                            "uid": user.uid,
+                            "profileImageURL": imageURL]
+                
+                Firestore.firestore().collection("users")
+                    .document(user.uid)
+                    .setData(data) { _ in
+                        self.didAuthenticateUser?()
+                    }
+            }
+            
         }
     }
     
-    func persistImageToStorage(image: UIImage) {
+    func persistImageToStorage(image: UIImage, completion: @escaping (String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             print("Could not convert image to data.")
             return
@@ -85,6 +97,7 @@ class AuthViewModel: ObservableObject {
                 }
 
                 print("Successfully uploaded image to Firebase Storage.")
+                completion(imageUrl)
             }
         }
     }

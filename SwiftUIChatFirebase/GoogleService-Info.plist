@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>880191042578-t6cr12n8beb28t4f8ne3u22lgentt1p2.apps.googleusercontent.com</string>
+	<string>704885909868-v2fcld19l074s94944pft1dqemqsiv66.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.880191042578-t6cr12n8beb28t4f8ne3u22lgentt1p2</string>
+	<string>com.googleusercontent.apps.704885909868-v2fcld19l074s94944pft1dqemqsiv66</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA1t1ZauJiYSax61bg4DBRTbE7HZklnoRU</string>
+	<string>AIzaSyBAIzvJjaOq9BuwfPck6rqlD9cHsyWGTkM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>880191042578</string>
+	<string>704885909868</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.dimitrijevolarevic.SwiftUIChatFirebase</string>
 	<key>PROJECT_ID</key>
-	<string>swiftuichatfirebase-66913</string>
+	<string>swiftuichat-79fbf</string>
 	<key>STORAGE_BUCKET</key>
-	<string>swiftuichatfirebase-66913.appspot.com</string>
+	<string>swiftuichat-79fbf.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:880191042578:ios:637a7689a29650eba254cb</string>
+	<string>1:704885909868:ios:b5f7cdae8483116806eb49</string>
 </dict>
 </plist>
