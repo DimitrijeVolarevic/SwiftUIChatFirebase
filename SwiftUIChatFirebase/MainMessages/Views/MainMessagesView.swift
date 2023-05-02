@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MainMessagesView: View {
     
     @State var showLogOutOptions = false
+    @ObservedObject var viewModel = MainMessagesViewModel()
     
     var body: some View {
         
@@ -35,11 +37,17 @@ extension MainMessagesView {
    private var navBar: some View {
         HStack(spacing: 16){
             
-            Image(systemName: "person.fill")
-                .font(.system(size: 34, weight: .heavy))
+            KFImage(URL(string: viewModel.chatUser?.profileImageURL ?? ""))
+                .resizable()
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(width: 65, height: 65)
+                .overlay(RoundedRectangle(cornerRadius: 44).stroke(lineWidth: 1))
+                .shadow(radius: 5)
+                
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("USERNAME")
+                Text("\(viewModel.chatUser?.email ?? "")")
                     .font(.system(size: 24, weight: .bold))
                 
                 HStack{
