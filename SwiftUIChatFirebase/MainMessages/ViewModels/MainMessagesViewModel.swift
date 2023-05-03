@@ -33,14 +33,14 @@ class MainMessagesViewModel: ObservableObject {
             self.errorMessage = "Could not find firebase uid"
             return
         }
-
+        
         Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
             if let error = error {
                 self.errorMessage = "Failed to fetch current user: \(error)"
                 print("Failed to fetch current user:", error)
                 return
             }
-
+            
             guard let data = snapshot?.data() else {
                 self.errorMessage = "No data found"
                 return
@@ -56,6 +56,4 @@ class MainMessagesViewModel: ObservableObject {
         
         try? Auth.auth().signOut()
     }
-    
-
 }

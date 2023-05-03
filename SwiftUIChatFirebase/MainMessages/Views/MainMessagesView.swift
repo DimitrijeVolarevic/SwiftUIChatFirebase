@@ -12,6 +12,7 @@ struct MainMessagesView: View {
     
     @State var showLogOutOptions = false
     @ObservedObject var viewModel = MainMessagesViewModel()
+    @State var showNewMessageScreen = false
     
     var body: some View {
         
@@ -88,7 +89,7 @@ extension MainMessagesView {
     
     private var newMessageButton: some View {
         Button {
-            
+            showNewMessageScreen.toggle()
         } label: {
             HStack {
                 Spacer()
@@ -104,6 +105,9 @@ extension MainMessagesView {
             .padding(.bottom)
             .shadow(radius: 15)
                 
+        }
+        .fullScreenCover(isPresented: $showNewMessageScreen) {
+            NewMessageView()
         }
     }
     
@@ -139,14 +143,14 @@ extension MainMessagesView {
     
 }
 
-struct MainMessagesView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            MainMessagesView()
-                .preferredColorScheme(.dark)
-            MainMessagesView()
-                .preferredColorScheme(.light)
-        }
-        
-    }
-}
+//struct MainMessagesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            MainMessagesView()
+//                .preferredColorScheme(.dark)
+//            MainMessagesView()
+//                .preferredColorScheme(.light)
+//        }
+//
+//    }
+//}
