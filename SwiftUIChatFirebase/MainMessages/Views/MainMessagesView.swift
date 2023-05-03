@@ -76,10 +76,13 @@ extension MainMessagesView {
         .actionSheet(isPresented: $showLogOutOptions) {
             ActionSheet(title: Text("Settings"), message: Text("What do you want to do?"), buttons: [
                 .destructive(Text("Sign Out"), action: {
-                    // sign out logic
+                    viewModel.signOut()
                 }),
                 .cancel()
             ])
+        }
+        .fullScreenCover(isPresented: $viewModel.isUserCurrentlyLoggedOut) {
+            LoginView().onAppear(perform: viewModel.fetchCurrentUser)
         }
     }
     

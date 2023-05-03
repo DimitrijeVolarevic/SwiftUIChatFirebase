@@ -12,15 +12,18 @@ import FirebaseFirestore
 
 class MainMessagesViewModel: ObservableObject {
     
+    @Published var isUserCurrentlyLoggedOut = false
     @Published var errorMessage = ""
     @Published var chatUser: ChatUser?
     
-    init() {
-        fetchCurrentUser()
-    }
     
-    struct ChatUser {
-        let uid, email, profileImageURL: String
+    init() {
+        
+        DispatchQueue.main.async {
+            self.isUserCurrentlyLoggedOut = Auth.auth().currentUser?.uid == nil
+        }
+        
+        fetchCurrentUser()
     }
     
     func fetchCurrentUser() {
@@ -43,14 +46,15 @@ class MainMessagesViewModel: ObservableObject {
                 return
             }
             
-            let uid = data["uid"] as? String ?? ""
-            let email = data["email"] as? String ?? ""
-            let profileImageURL = data["profileImageURL"] as? String ?? ""
-            self.chatUser = ChatUser(uid: uid, email: email.replacingOccurrences(of: "@gmail.com", with: ""), profileImageURL: profileImageURL)
-            
-            print("Fetched user data successfully: \(email), \(uid), \(profileImageURL)")
+            self.chatUser = .init(data: data)
             
         }
+    }
+    
+    func signOut() {
+        isUserCurrentlyLoggedOut.toggle()
+        
+        try? Auth.auth().signOut()
     }
     
 

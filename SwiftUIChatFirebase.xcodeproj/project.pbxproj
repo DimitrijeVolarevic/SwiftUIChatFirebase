@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B706D9142A02906600462D26 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B706D9132A02906600462D26 /* ChatUser.swift */; };
 		B76F5B5F2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */; };
 		B76F5B612A0007B100D319E4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F5B602A0007B100D319E4 /* LoginView.swift */; };
 		B76F5B632A0007B200D319E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76F5B622A0007B200D319E4 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B706D9132A02906600462D26 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		B76F5B5B2A0007B100D319E4 /* SwiftUIChatFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIChatFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChatFirebaseApp.swift; sourceTree = "<group>"; };
 		B76F5B602A0007B100D319E4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B706D9122A02904B00462D26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B706D9132A02906600462D26 /* ChatUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B76F5B522A0007B100D319E4 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 		B76F5B5D2A0007B100D319E4 /* SwiftUIChatFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				B706D9122A02904B00462D26 /* Model */,
 				B7E11A582A016E2E006E3DC3 /* MainMessages */,
 				B7C5220D2A01260600E52B57 /* Utilities */,
 				B7C2DA9E2A002530003B981D /* Authentication */,
@@ -230,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B706D9142A02906600462D26 /* ChatUser.swift in Sources */,
 				B76F5B612A0007B100D319E4 /* LoginView.swift in Sources */,
 				B7C5220F2A01261C00E52B57 /* ImagePicker.swift in Sources */,
 				B76F5B5F2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift in Sources */,
