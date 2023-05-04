@@ -10,6 +10,7 @@ import Kingfisher
 
 struct NewMessageView: View {
     
+    let didSelectNewUser: (ChatUser) -> ()
     @ObservedObject var viewModel = NewMessageViewModel()
     @Environment(\.dismiss) var dismiss
     
@@ -17,15 +18,22 @@ struct NewMessageView: View {
         NavigationView {
             ScrollView {
                 ForEach(viewModel.users, id: \.uid) { user in
-                    HStack(spacing: 16) {
-                        KFImage(URL(string: user.profileImageURL))
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 50, height: 50)
-                            .overlay(RoundedRectangle(cornerRadius: 44).stroke(lineWidth: 1))
-                        Text(user.email)
-                        Spacer()
+                    Button {
+                        dismiss()
+                        didSelectNewUser(user)
+                    } label: {
+                        HStack(spacing: 16) {
+                            KFImage(URL(string: user.profileImageURL))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 50, height: 50)
+                                .overlay(RoundedRectangle(cornerRadius: 44).stroke(lineWidth: 1))
+                            Text(user.email)
+                            Spacer()
+                        }
+                        
+                        
                     }
                     .padding(.horizontal)
                     Divider()
@@ -43,16 +51,17 @@ struct NewMessageView: View {
                         } label: {
                             Text("Cancel")
                         }
-
+                        
                     }
                 }
             }
         }
+        .accentColor(.primary) 
     }
     
     struct NewMessageView_Previews: PreviewProvider {
         static var previews: some View {
-            NewMessageView()
+            NewMessageView(didSelectNewUser: { user in print(user.email)})
         }
     }
 }
