@@ -10,12 +10,19 @@ import SwiftUI
 struct ChatLogView: View {
     
     let chatUser: ChatUser?
-    @State var chatText = ""
+    
+    init(chatUser: ChatUser?) {
+        self.chatUser = chatUser
+        self.viewModel = .init(chatUser: chatUser)
+    }
+    
+    @ObservedObject var viewModel: ChatLogViewModel
     
     var body: some View {
         
         ZStack {
             messagesView
+            Text(viewModel.errorMessage)
             
             VStack {
                 Spacer()
@@ -48,9 +55,18 @@ extension ChatLogView {
                 .resizable()
                 .frame(width: 27, height: 24)
                 .foregroundColor(Color(.darkGray))
-            TextField("Description", text: $chatText)
+            
+            ZStack {
+                descriptionPlaceHolder
+                TextEditor(text: $viewModel.chatText)
+                    .opacity(viewModel.chatText.isEmpty ? 0.5 : 1)
+            }
+            .frame(height: 40)
+            
+            
+//            TextField("Description", text: $chatText)
             Button {
-                
+                viewModel.handleSend()
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
@@ -86,5 +102,17 @@ extension ChatLogView {
             HStack{ Spacer() }
         }
         .background(Color(.init(white: 0.95, alpha: 1)))
+    }
+    
+    private var descriptionPlaceHolder: some View {
+       
+        HStack {
+            Text("Type your message..")
+                .foregroundColor(Color(.gray))
+                .font(.system(size: 15))
+                .padding(.leading, 5)
+                .padding(.top, -4)
+            Spacer()
+        }
     }
 }

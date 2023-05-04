@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B706D9142A02906600462D26 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B706D9132A02906600462D26 /* ChatUser.swift */; };
+		B76385D02A04304E007B555E /* ChatLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76385CF2A04304E007B555E /* ChatLogViewModel.swift */; };
 		B76F5B5F2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */; };
 		B76F5B612A0007B100D319E4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F5B602A0007B100D319E4 /* LoginView.swift */; };
 		B76F5B632A0007B200D319E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76F5B622A0007B200D319E4 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		B706D9132A02906600462D26 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		B76385CF2A04304E007B555E /* ChatLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewModel.swift; sourceTree = "<group>"; };
 		B76F5B5B2A0007B100D319E4 /* SwiftUIChatFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIChatFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChatFirebaseApp.swift; sourceTree = "<group>"; };
 		B76F5B602A0007B100D319E4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		B7B386872A03A16A0065FBEA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B76385CF2A04304E007B555E /* ChatLogViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				B706D9142A02906600462D26 /* ChatUser.swift in Sources */,
 				B7B386892A03A17E0065FBEA /* ChatLogView.swift in Sources */,
 				B7A77F2D2A02FCD8000CF355 /* NewMessageView.swift in Sources */,
+				B76385D02A04304E007B555E /* ChatLogViewModel.swift in Sources */,
 				B76F5B612A0007B100D319E4 /* LoginView.swift in Sources */,
 				B7A77F2F2A02FCE8000CF355 /* NewMessageViewModel.swift in Sources */,
 				B7C5220F2A01261C00E52B57 /* ImagePicker.swift in Sources */,
