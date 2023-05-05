@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ChatLogView: View {
     
@@ -84,19 +85,37 @@ extension ChatLogView {
     
     private var messagesView: some View {
         ScrollView {
-            ForEach(0..<15) { num in
-                HStack {
-                    Spacer()
-                    HStack {
-                        Text("FAKE MESSAGES")
-                            .foregroundColor(.white)
+            ForEach(viewModel.messages) { message in
+                VStack {
+                    if message.fromId == Auth.auth().currentUser?.uid {
+                        HStack {
+                            Spacer()
+                            HStack {
+                                Text(message.text)
+                                    .foregroundColor(.white)
+                            }
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(8)
+                        }
+                    } else {
+                        HStack {
+                            HStack {
+                                Text(message.text)
+                                    .foregroundColor(.black)
+                            }
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            Spacer()
+
+                        }
+
                     }
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(8)
                 }
                 .padding(.horizontal)
                 .padding(.top,5)
+                
 
             }
             HStack{ Spacer() }
