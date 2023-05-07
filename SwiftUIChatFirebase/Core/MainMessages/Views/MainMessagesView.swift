@@ -145,7 +145,7 @@ extension MainMessagesView {
                                     .foregroundColor(.gray)
                             }
                             Spacer()
-                            Text("22d")
+                            Text(recentMessage.timeAgo)
                                 .font(.system(size: 14, weight: .semibold))
                         }
                     }

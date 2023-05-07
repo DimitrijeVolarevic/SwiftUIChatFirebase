@@ -7,26 +7,21 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
-struct RecentMessage: Identifiable {
+struct RecentMessage: Codable, Identifiable {
     
-    var id: String { documentID }
-    
-    let documentID: String
+    @DocumentID var id: String?
     let text: String
     let fromId, toId: String
     let profileImageURL: String
     let email: String
-    let timestamp: Firebase.Timestamp
+    let timestamp: Date
     
-    init(documentID: String, data: [String: Any]) {
-        self.documentID = documentID
-        self.text = data["text"] as? String ?? ""
-        self.fromId = data["fromId"] as? String ?? ""
-        self.toId = data["toId"] as? String ?? ""
-        self.profileImageURL = data["profileImageURL"] as? String ?? ""
-        self.email = data["email"] as? String ?? ""
-        self.timestamp = data["timestamp"] as? Timestamp ?? Timestamp(date: Date())
-        
-    }
+    var timeAgo: String {
+            let formatter = RelativeDateTimeFormatter()
+            formatter.unitsStyle = .abbreviated
+            return formatter.localizedString(for: timestamp, relativeTo: Date())
+        }
+    
 }

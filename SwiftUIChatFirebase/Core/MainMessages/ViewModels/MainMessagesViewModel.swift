@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class MainMessagesViewModel: ObservableObject {
     
@@ -79,12 +80,19 @@ class MainMessagesViewModel: ObservableObject {
                     let documentID = change.document.documentID
                     
                     if let index = self.recentMessages.firstIndex(where: { recentMessage in
-                        return recentMessage.documentID == documentID
+                        return recentMessage.id == documentID
                     }) {
                         self.recentMessages.remove(at: index)
                     }
                     
-                    self.recentMessages.insert(.init(documentID: documentID, data: change.document.data()), at: 0)
+                    do {
+                        if let rm = try? change.document.data(as: RecentMessage.self) {
+                            self.recentMessages.insert(rm, at: 0)
+                        }
+                    } catch {
+                        print(error)
+                    }
+                    
                     
                 })
             }
