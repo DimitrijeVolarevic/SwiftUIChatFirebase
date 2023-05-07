@@ -65,7 +65,6 @@ extension ChatLogView {
             .frame(height: 40)
             
             
-//            TextField("Description", text: $chatText)
             Button {
                 viewModel.handleSend()
             } label: {
@@ -85,43 +84,27 @@ extension ChatLogView {
     
     private var messagesView: some View {
         ScrollView {
-            ForEach(viewModel.messages) { message in
+            ScrollViewReader { proxy in
                 VStack {
-                    if message.fromId == Auth.auth().currentUser?.uid {
-                        HStack {
-                            Spacer()
-                            HStack {
-                                Text(message.text)
-                                    .foregroundColor(.white)
-                            }
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(8)
+                    ForEach(viewModel.messages.indices, id: \.self) { index in
+                        MessageView(message: viewModel.messages[index])
+                        
+                        if index == viewModel.messages.count - 1 {
+                            Spacer(minLength: 80)
+                                .id("LastMessage")
                         }
-                    } else {
-                        HStack {
-                            HStack {
-                                Text(message.text)
-                                    .foregroundColor(.black)
-                            }
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            Spacer()
-
-                        }
-
                     }
                 }
-                .padding(.horizontal)
-                .padding(.top,5)
-                
-
+                .onReceive(viewModel.$count) { _ in
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        proxy.scrollTo("LastMessage", anchor: .bottom)
+                    }
+                }
             }
-            HStack{ Spacer() }
         }
         .background(Color(.init(white: 0.95, alpha: 1)))
     }
+
     
     private var descriptionPlaceHolder: some View {
        
@@ -133,5 +116,42 @@ extension ChatLogView {
                 .padding(.top, -4)
             Spacer()
         }
+    }
+}
+
+struct MessageView: View {
+    let message: Message
+    
+    var body: some View {
+        VStack {
+            if message.fromId == Auth.auth().currentUser?.uid {
+                HStack {
+                    Spacer()
+                    HStack {
+                        Text(message.text)
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(8)
+                }
+            } else {
+                HStack {
+                    HStack {
+                        Text(message.text)
+                            .foregroundColor(.black)
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    Spacer()
+
+                }
+
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top,5)
+        
     }
 }

@@ -14,6 +14,7 @@ class ChatLogViewModel: ObservableObject {
     @Published var chatText = ""
     @Published var errorMessage = ""
     @Published var messages = [Message]()
+    @Published var count = 0
     
     let chatUser: ChatUser?
     
@@ -45,6 +46,7 @@ class ChatLogViewModel: ObservableObject {
             
             print("Successfully saved current user sending message")
             self.chatText = ""
+            self.count += 1
         }
         
         let recipientMessageDocument = Firestore.firestore().collection("messages")
@@ -89,6 +91,9 @@ class ChatLogViewModel: ObservableObject {
                     self.messages.append(message)
                     
                 })
+                DispatchQueue.main.async {
+                    self.count += 1
+                }
             }
     }
 }
