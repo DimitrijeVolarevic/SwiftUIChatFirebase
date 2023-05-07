@@ -124,20 +124,23 @@ extension MainMessagesView {
     
     private var messagesView: some View {
         ScrollView {
-            ForEach(0..<10, id: \.self) { num in
+            ForEach(viewModel.recentMessages) { recentMessage in
                 VStack{
                     NavigationLink {
                         Text("Destination")
                     } label: {
                         HStack(spacing: 16) {
-                            Image(systemName: "person.fill")
-                                .font(.system(size: 32))
-                                .padding(8)
+                            KFImage(URL(string: recentMessage.profileImageURL))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 50, height: 50)
                                 .overlay(RoundedRectangle(cornerRadius: 44).stroke(lineWidth: 1))
-                            VStack(alignment: .leading) {
-                                Text("Username")
+                                .shadow(radius: 5)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(recentMessage.email)
                                     .font(.system(size: 16, weight: .bold))
-                                Text("Message sent to user")
+                                Text(recentMessage.text)
                                     .font(.system(size: 14))
                                     .foregroundColor(.gray)
                             }

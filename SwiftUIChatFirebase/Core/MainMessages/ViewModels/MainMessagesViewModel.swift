@@ -15,6 +15,7 @@ class MainMessagesViewModel: ObservableObject {
     @Published var isUserCurrentlyLoggedOut = false
     @Published var errorMessage = ""
     @Published var chatUser: ChatUser?
+    @Published var recentMessages = [RecentMessage]()
     
     
     init() {
@@ -24,6 +25,8 @@ class MainMessagesViewModel: ObservableObject {
         }
         
         fetchCurrentUser()
+        
+        fetchRecentMessages()
     }
     
     func fetchCurrentUser() {
@@ -55,5 +58,36 @@ class MainMessagesViewModel: ObservableObject {
         isUserCurrentlyLoggedOut.toggle()
         
         try? Auth.auth().signOut()
+    }
+    
+    func fetchRecentMessages() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore()
+            .collection("recent_messages")
+            .document(uid)
+            .collection("messages")
+            .order(by: "timestamp")
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    self.errorMessage = "Failed to listen for recent messages: \(error)"
+                    print(error)
+                    return
+                }
+                querySnapshot?.documentChanges.forEach({ change in
+                    
+                    let documentID = change.document.documentID
+                    
+                    if let index = self.recentMessages.firstIndex(where: { recentMessage in
+                        return recentMessage.documentID == documentID
+                    }) {
+                        self.recentMessages.remove(at: index)
+                    }
+                    
+                    self.recentMessages.insert(.init(documentID: documentID, data: change.document.data()), at: 0)
+                    
+                })
+            }
+        
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B706D9142A02906600462D26 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B706D9132A02906600462D26 /* ChatUser.swift */; };
+		B70C149C2A07F6C9003607E9 /* RecentMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70C149B2A07F6C9003607E9 /* RecentMessage.swift */; };
 		B76385D02A04304E007B555E /* ChatLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76385CF2A04304E007B555E /* ChatLogViewModel.swift */; };
 		B76F5B5F2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */; };
 		B76F5B612A0007B100D319E4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76F5B602A0007B100D319E4 /* LoginView.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		B706D9132A02906600462D26 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		B70C149B2A07F6C9003607E9 /* RecentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessage.swift; sourceTree = "<group>"; };
 		B76385CF2A04304E007B555E /* ChatLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewModel.swift; sourceTree = "<group>"; };
 		B76F5B5B2A0007B100D319E4 /* SwiftUIChatFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIChatFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76F5B5E2A0007B100D319E4 /* SwiftUIChatFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChatFirebaseApp.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				B706D9132A02906600462D26 /* ChatUser.swift */,
 				B7D2EB9D2A058D2400FD86AD /* Message.swift */,
+				B70C149B2A07F6C9003607E9 /* RecentMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				B7D2EB9E2A058D2400FD86AD /* Message.swift in Sources */,
 				B7E11A5C2A016E83006E3DC3 /* MainMessagesView.swift in Sources */,
 				B7BCC4ED2A01ACE000167FD4 /* MainMessagesViewModel.swift in Sources */,
+				B70C149C2A07F6C9003607E9 /* RecentMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
